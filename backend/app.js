@@ -18,7 +18,9 @@ app.use(
 
 // sets up mongoose for the mongoDB connection
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect(process.env.MONGO_URL, {
+    family: 4,
+  })
   .then(() => {
     console.log('Database connection Success!')
   })

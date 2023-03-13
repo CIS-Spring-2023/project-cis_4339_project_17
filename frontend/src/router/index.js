@@ -25,6 +25,11 @@ const routes = [
     component: () => import('../components/updateClient.vue')
   },
   {
+    path: '/addservices',
+    name: 'addservices',
+    component: () => import('../components/addServices.vue')
+  },
+  {
     path: '/eventform',
     name: 'eventform',
     component: () => import('../components/eventForm.vue')
@@ -39,6 +44,11 @@ const routes = [
     name: 'eventdetails',
     props: true,
     component: () => import('../components/eventDetails.vue')
+  },
+  {
+    path: '/findservices',
+    name: 'findservices',
+    component: () => import('../components/findServices.vue')
   }
 ]
 const router = createRouter({
