@@ -2,11 +2,14 @@
 import { DateTime } from 'luxon'
 import axios from 'axios'
 import AttendanceChart from './barChart.vue'
+import PieChart from './PieChart.vue'
 const apiURL = import.meta.env.VITE_ROOT_API
+
 
 export default {
   components: {
-    AttendanceChart
+    AttendanceChart,
+    PieChart
   },
   data() {
     return {
@@ -82,6 +85,19 @@ export default {
       <div
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10"
       >
+      <div class="ml-10"></div>
+      <div class="flex flex-col col-span-2">
+      <div> 
+        <h2 class="font-bold text-4xl text-red-700 tracking-widest text-center mt-10">
+          Number of Events by ZIP Code
+        </h2>
+        <pie-chart/>
+    
+
+      </div>
+
+
+
         <div class="ml-10"></div>
         <div class="flex flex-col col-span-2">
           <table class="min-w-full shadow-md rounded">
@@ -111,6 +127,7 @@ export default {
               :chart-data="chartData"
             ></AttendanceChart>
 
+
             <!-- Start of loading animation -->
             <div class="mt-40" v-if="loading">
               <p
@@ -135,5 +152,7 @@ export default {
         </div>
       </div>
     </div>
+    </div>
+    
   </main>
 </template>
