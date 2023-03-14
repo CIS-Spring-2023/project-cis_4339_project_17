@@ -66,6 +66,26 @@ export default {
               </router-link>
             </li>
             <li>
+              <router-link to="/editService">
+                <span
+                  style="position: relative; top: 6px"
+                  class="material-icons"
+                  >search</span
+                >
+                Edit Services
+              </router-link>
+            </li>
+            <li>
+              <router-link to="/toggleService">
+                <span
+                  style="position: relative; top: 6px"
+                  class="material-icons"
+                  >search</span
+                >
+                Toggle Services
+              </router-link>
+            </li>
+            <li>
               <router-link to="/findclient">
                 <span
                   style="position: relative; top: 6px"

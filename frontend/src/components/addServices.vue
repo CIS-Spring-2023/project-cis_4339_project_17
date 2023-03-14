@@ -120,8 +120,9 @@ export default {
               <input
                 type="text"
                 class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                v-model="client.firstName"  
-              /> <!--will have to change in sprint 3 to services instead of client, "services.serviceName"-->
+                v-model="client.firstName"
+              />
+              <!--will have to change in sprint 3 to services instead of client, "services.serviceName"-->
               <span class="text-black" v-if="v$.client.firstName.$error">
                 <p
                   class="text-red-700"
@@ -143,7 +144,8 @@ export default {
                 class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 placeholder
                 v-model="client.middleName"
-              /> <!--will have to change in sprint 3 to services instead of client, "services.description"-->
+              />
+              <!--will have to change in sprint 3 to services instead of client, "services.description"-->
             </label>
           </div>
         </div>
@@ -161,7 +163,8 @@ export default {
                 type="text"
                 class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 v-model="client.address.city"
-              /> <!--will have to change in sprint 3 to services instead of client, "services.eventName"-->
+              />
+              <!--will have to change in sprint 3 to services instead of client, "services.eventName"-->
               <span class="text-black" v-if="v$.client.address.city.$error">
                 <p
                   class="text-red-700"

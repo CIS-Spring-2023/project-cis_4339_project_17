@@ -30,6 +30,16 @@ const routes = [
     component: () => import('../components/addServices.vue')
   },
   {
+    path: '/editService',
+    name: 'editService',
+    component: () => import('../components/editService.vue')
+  },
+  {
+    path: '/toggleService',
+    name: 'toggleService',
+    component: () => import('../components/toggleService.vue')
+  },
+  {
     path: '/eventform',
     name: 'eventform',
     component: () => import('../components/eventForm.vue')
