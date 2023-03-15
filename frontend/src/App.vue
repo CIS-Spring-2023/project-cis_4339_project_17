@@ -2,11 +2,14 @@
 import axios from 'axios'
 const apiURL = import.meta.env.VITE_ROOT_API
 
+
+
+
 export default {
   name: 'App',
   data() {
     return {
-      orgName: 'Dataplatform'
+      orgName: 'Group 17'
     }
   },
   created() {
@@ -15,7 +18,10 @@ export default {
     })
   }
 }
+
 </script>
+
+
 <template>
   <main class="flex flex-row">
     <div id="_container" class="h-screen">
@@ -26,7 +32,13 @@ export default {
         <nav class="mt-10">
           <ul class="flex flex-col gap-4">
             <li>
-              <router-link to="/">
+              <router-link to="/Login">
+                <span style="position: relative; top: 6px"
+                class="material-icons">person</span>Login
+              </router-link>
+            </li>
+            <li>
+              <router-link to="/home">
                 <span
                   style="position: relative; top: 6px"
                   class="material-icons"
@@ -132,6 +144,10 @@ export default {
     </div>
   </main>
 </template>
+
+
+
+
 <style>
 #_container {
   background-color: #c8102e;
