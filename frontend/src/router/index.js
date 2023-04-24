@@ -1,15 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-// make all paths and names lowercase for consistency
+//detailing links to necessary pages via router
+
 const routes = [
   {
-    path: '/',
-    name: 'Login',
+    path: '/Login',
+    name: 'login',
     props: true,
     component: () => import('../views/userlogin.vue')
   },
   {
     path: '/home',
+    name: 'home',
     props: true,
     component: () => import('../components/homePage.vue')
   },
@@ -31,14 +33,14 @@ const routes = [
     component: () => import('../components/updateClient.vue')
   },
   {
-    path: '/addservices',
-    name: 'addservices',
-    component: () => import('../components/addServices.vue')
+    path: '/CREATEService',
+    name: 'createservices',
+    component: () => import('../components/CREATEService.vue')
   },
   {
-    path: '/editService',
+    path: '/EDITService',
     name: 'editService',
-    component: () => import('../components/editService.vue')
+    component: () => import('../components/EDITService.vue')
   },
   {
     path: '/toggleService',

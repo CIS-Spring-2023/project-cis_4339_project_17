@@ -129,10 +129,53 @@ const eventDataSchema = new Schema(
   }
 )
 
+
+//collections for services and users - SP3
+const servicesDataSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true
+    },
+    description: {
+      type: String,
+      required: true
+    }
+  },
+  {
+    collection: 'services'
+  }
+)
+
+const usersDataSchema = new Schema(
+  {
+    _id: {
+      type: String,
+      required: true
+    },
+    username: {
+      type: String,
+      required: true
+    },
+    password: {
+      type: String,
+      required: true
+    }
+  },
+  {
+    collection: 'org'
+  }
+)
+
+
 // create models from mongoose schemas
 const clients = mongoose.model('client', clientDataSchema)
 const orgs = mongoose.model('org', orgDataSchema)
 const events = mongoose.model('event', eventDataSchema)
+const services = mongoose.model('services', servicesDataSchema)
+const users = mongoose.model('users', usersDataSchema)
 
+
+//adding services and users - SP3
 // package the models in an object to export
-module.exports = { clients, orgs, events }
+module.exports = { clients, orgs, events, services, users }

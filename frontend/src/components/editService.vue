@@ -4,7 +4,8 @@
   <br>
   <div class="main">
     <h2 class="font-bold text-4xl text-red-700 tracking-widest text-center mt-10">Edit Services</h2>
-    <label>Select an event type:</label>
+    <br>
+    <label>Select an event type: </label>
     <select v-model="selectedEventType">
       <option v-for="(eventType, index) in eventTypes" :key="index">
         {{ eventType }}
@@ -19,6 +20,7 @@
           <th>Description</th>
           <th>Price</th>
           <th></th>
+          <th>Toggle</th>
         </tr>
       </thead>
       <tbody>
@@ -27,6 +29,7 @@
           <td>{{ service.description }}</td>
           <td>{{ service.price }}</td>
           <td><button @click="editService(index)">Edit</button></td>
+          <td><button class="ui button toggle" :class="{active:isActive}" @click="toggle"> {{isActive ? 'ON' : 'OFF'}} </button></td>
         </tr>
       </tbody>
     </table>
@@ -44,6 +47,26 @@
       <button @click="saveService">Save</button>
       <button @click="cancelEdit">Cancel</button>
     </div>
+    <table class="min-w-full shadow-md rounded">
+      <thead class="bg-gray-50 text-xl">
+        <tr>
+          <th class="p-4 text-left">Service Name</th>
+          <th class="p-4 text-left">Service Description</th>
+          <th class="p-4 text-left">Status</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-300">
+        <tr
+          @click="editEvent(event._id)"
+          v-for="event in events"
+          :key="event._id"
+        >
+          <td class="p-2 text-left">{{ event.name }}</td>
+          <td class="p-2 text-left">{{ formattedDate(event.date) }}</td>
+          <td class="p-2 text-left">{{ event.address.line1 }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -70,7 +93,9 @@ export default {
           price: 150
         }
       ],
-      editingService: null
+      editingService: null,
+      //toggle button - SP3
+      isActive: false,
     }
   },
   methods: {
@@ -84,7 +109,14 @@ export default {
     },
     cancelEdit() {
       this.editingService = null
-    }
+    },
+    // abstracted method to get services - SP3
+    getEvents() {
+      axios.get(`${apiURL}/events`).then((res) => {
+        this.services = res.data
+      })
+      window.scrollTo(0, 0)
+    },
   }
 }
 </script>

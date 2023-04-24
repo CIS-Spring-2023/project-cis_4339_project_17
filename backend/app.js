@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 const express = require('express')
 const mongoose = require('mongoose') //require mongoose library functionaility
 const morgan = require('morgan') // better debugging
@@ -40,6 +41,11 @@ app.use('/clients', require('./routes/clients'))
 app.use('/events', require('./routes/events'))
 app.use('/org', require('./routes/org'))
 
+//added middleware for services and users - SP3 
+app.use('/CREATEservices', require('./route/services'))
+app.use('/EDITService', require('./route/services'))
+
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`)
 })
@@ -52,4 +58,8 @@ app.use(function (err, req, res, next) {
     err.statusCode = 500
   }
   res.status(err.statusCode).send(err.message)
+})
+
+app.get = ('/', (req, res) => {
+  res.send('Test')
 })

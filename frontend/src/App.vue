@@ -68,33 +68,23 @@ export default {
               </router-link>
             </li>
             <li>
-              <router-link to="/addservices">
+              <router-link to="/CREATEService">
                 <span
                   style="position: relative; top: 6px"
                   class="material-icons"
                   >event</span
                 >
-                Add Services
+                Create Services
               </router-link>
             </li>
             <li>
-              <router-link to="/editService">
+              <router-link to="/EDITService">
                 <span
                   style="position: relative; top: 6px"
                   class="material-icons"
                   >search</span
                 >
                 Edit Services
-              </router-link>
-            </li>
-            <li>
-              <router-link to="/toggleService">
-                <span
-                  style="position: relative; top: 6px"
-                  class="material-icons"
-                  >search</span
-                >
-                Toggle Services
               </router-link>
             </li>
             <li>

@@ -1,3 +1,4 @@
+<!-- eslint-disable prettier/prettier -->
 <script>
 import useVuelidate from '@vuelidate/core'
 import { required, email, alpha, numeric } from '@vuelidate/validators'
@@ -45,15 +46,15 @@ export default {
       this.v$.$validate().then((valid) => {
         if (valid) {
           axios
-            .get(`${apiURL}/clients/lookup/${this.client.phoneNumber.primary}`)
+            .get(`${apiURL}/services/${this.services.name}`)
             .then((res) => {
               if (res.data) {
                 if (res.data.orgs.includes(this.org)) {
-                  alert('Client phone number has already been registered.')
+                  alert('Service name has already been registered.')
                   this.$router.push({ name: 'findclient' })
                 } else {
                   axios
-                    .put(`${apiURL}/clients/register/${res.data._id}`)
+                    .put(`${apiURL}/services/${res.data._id}`)
                     .then(() => {
                       alert('Client registered')
                       this.$router.push({ name: 'findclient' })
@@ -64,9 +65,9 @@ export default {
                 }
               } else {
                 axios
-                  .post(`${apiURL}/clients`, this.client)
+                  .post(`${apiURL}/services`, this.service)
                   .then(() => {
-                    alert('Client added')
+                    alert('Service added')
                     this.$router.push({ name: 'findclient' })
                   })
                   .catch((error) => {
@@ -96,6 +97,7 @@ export default {
   }
 }
 </script>
+
 <template>
   <main>
     <h1
@@ -153,29 +155,8 @@ export default {
         <div
           class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10"
         >
-          <h2 class="text-2xl font-bold">Event Details</h2>
           <!-- form field -->
-          <div class="flex flex-col">
-            <label class="block">
-              <span class="text-gray-700">Event</span>
-              <span style="color: #ff0000">*</span>
-              <input
-                type="text"
-                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                v-model="client.address.city"
-              />
-              <!--will have to change in sprint 3 to services instead of client, "services.eventName"-->
-              <span class="text-black" v-if="v$.client.address.city.$error">
-                <p
-                  class="text-red-700"
-                  v-for="error of v$.client.address.$errors"
-                  :key="error.$uid"
-                >
-                  {{ error.$message }}!
-                </p>
-              </span>
-            </label>
-          </div>
+          <div class="flex flex-col"></div>
           <div></div>
           <!-- submit button -->
           <div class="flex justify-between mt-10 mr-20">

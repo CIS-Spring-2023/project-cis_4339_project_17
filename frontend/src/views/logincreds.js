@@ -1,45 +1,48 @@
-import { defineStore } from 'pinia'
+// My user schema
 
-//defining a store
-export const useLoggedInUserStore = defineStore({
-  // id is only required for devtools with the Pinia store
-  id: 'loggedInUser',
-  //central part of the store
-  state: () => {
-    return {
-      name: "",
-      isLoggedIn: false,
-    }
-  },
-  // equivalent to methods in components, perfect to define business logic
-  actions: {
-    async login(username, password) {
-      try {
-        const response = await apiLogin(username, password);
-        this.$patch({
-          isLoggedIn: response.isAllowed,
-          name: response.name,
-        })
-        this.$router.push("/");
-      } catch(error) {
-        console.log(error)
-      }
-    },
-    logout() {
-      this.patch({
-        name: "",
-        isLoggedIn: false
-      });
+var mongoose = require('mongoose')
+var Schema = mongoose.Schema
+var bcrypt = require('bcrypt-nodejs')
 
-      // we could do other stuff like redirecting the user
-    }
-  }
+var userSchema = new Schema({
+  username: String,
+  password: String
 });
 
-//simulate a login - we will later use our backend to handle authentication
-function apiLogin(u, p) {
-  if (u === "ed" && p === "ed") return Promise.resolve({ isAllowed: true, name: "John Doe" });
-  if (p === "ed") return Promise.resolve({ isAllowed: false });
-  return Promise.reject(new Error("invalid credentials"));
+// hash the password
+userSchema.methods.generateHash = function (password) {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
 }
 
+// checking if password is valid
+userSchema.methods.validPassword = function (password) {
+  return bcrypt.compareSync(password, this.password)
+}
+var User = mongoose.model('user', userSchema)
+module.exports = User
+
+
+
+
+// My APIs for registering and authenticating a user
+
+var User = require('/path/to/user/model')
+
+app.post('/register', function (req, res) {
+  var new_user = new User({
+    username: req.body.username
+  })
+
+  new_user.password = new_user.generateHash(req.body.password)
+  new_user.save()
+})
+
+app.post('/', function (req, res) {
+  User.findOne({ username: req.body.username }, function (err, user) {
+    if (!user.validPassword(req.body.password)) {
+      //password did not match
+    } else {
+      // password matched. proceed forward
+    }
+  })
+})
