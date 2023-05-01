@@ -5,6 +5,12 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
+    path: '/home',
+    name: 'home',
+    props: true,
+    component: () => import('../components/dashboard.vue')
+  },
+  {
     path: '/Login',
     name: 'login',
     props: true,
@@ -13,22 +19,6 @@ const routes = [
     meta: {
       hideNavbar: true,
      }
-  },
-  {
-    path: '/',
-    name: 'login',
-    props: true,
-    component: () => import('../components/userlogin.vue'),
-    //hides navbar when on login screen - SP3 
-    meta: {
-      hideNavbar: true,
-     }
-  },
-  {
-    path: '/home',
-    name: 'home',
-    props: true,
-    component: () => import('../components/homePage.vue')
   },
   {
     path: '/intakeform',

@@ -33,6 +33,8 @@
         </tr>
       </tbody>
     </table>
+    <br>
+    <br>
     <div v-if="editingService">
       <h4>Edit Service: {{ editingService.name }}</h4>
       <label>Name:</label>
