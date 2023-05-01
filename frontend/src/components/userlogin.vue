@@ -23,7 +23,7 @@
 
 <script>
 import useVuelidate from '@vuelidate/core';
-
+const apiURL = import.meta.env.VITE_ROOT_API
 
 
 export default {
@@ -46,13 +46,6 @@ export default {
       return this.$route.path === '/Login';
     }
   },
-  setup() {
-    const store = UserLoggedIn()
-    return {
-      v$: useVuelidate(($autoDirty: true)),
-      store
-    }
-  }
 }
 </script>
 

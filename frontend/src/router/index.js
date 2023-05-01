@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { createRouter, createWebHistory } from 'vue-router'
 
 //detailing links to necessary pages via router
@@ -5,6 +6,16 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
   {
     path: '/Login',
+    name: 'login',
+    props: true,
+    component: () => import('../components/userlogin.vue'),
+    //hides navbar when on login screen - SP3 
+    meta: {
+      hideNavbar: true,
+     }
+  },
+  {
+    path: '/',
     name: 'login',
     props: true,
     component: () => import('../components/userlogin.vue'),

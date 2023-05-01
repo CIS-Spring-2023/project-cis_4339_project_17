@@ -14,7 +14,7 @@ import pieChartData from '../assets/piedata.js'
 
 //SP3
 import axios from 'axios'
-
+const apiURL = import.meta.env.VITE_ROOT_API
 //Attempt to fetch from DB - SP3
 
 export default {

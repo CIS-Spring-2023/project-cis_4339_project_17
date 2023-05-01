@@ -1,3 +1,5 @@
+<!-- eslint-disable prettier/prettier -->
+<!-- eslint-disable prettier/prettier -->
 <script>
 import axios from 'axios'
 const apiURL = import.meta.env.VITE_ROOT_API
@@ -16,8 +18,6 @@ export default {
   }
 }
 </script>
-
-
 
 <template>
   <main class="flex flex-row">
@@ -38,7 +38,7 @@ export default {
                 >LOGOUT
               </router-link>
             </li>
-            <br>
+            <br />
             <li>
               <router-link to="/home">
                 <span
@@ -49,7 +49,7 @@ export default {
                 Dashboard
               </router-link>
             </li>
-            <br>
+            <br />
             <li>
               <router-link to="/intakeform">
                 <span
@@ -80,7 +80,7 @@ export default {
                 Create Services
               </router-link>
             </li>
-            <br>
+            <br />
             <li>
               <router-link to="/EDITService">
                 <span
@@ -91,7 +91,7 @@ export default {
                 Edit Services
               </router-link>
             </li>
-            <br>
+            <br />
             <li>
               <router-link to="/findclient">
                 <span
