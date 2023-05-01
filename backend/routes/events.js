@@ -36,7 +36,6 @@ router.get('/id/:id', (req, res, next) => {
 })
 
 // GET events based on search query
-// Ex: '...?name=Food&searchBy=name'
 router.get('/search/', (req, res, next) => {
   const dbQuery = { org: org }
   switch (req.query.searchBy) {

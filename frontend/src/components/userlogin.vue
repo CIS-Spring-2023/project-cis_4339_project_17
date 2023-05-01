@@ -22,6 +22,8 @@
 </template>
 
 <script>
+
+
 export default {
   data() {
     return {
@@ -37,6 +39,9 @@ export default {
   computed: {
     isValid() {
       return this.username !== '' && this.password !== ''
+    },
+    hide() {
+      return this.$route.path === '/Login';
     }
   }
 }

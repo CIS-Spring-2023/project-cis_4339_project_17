@@ -2,14 +2,11 @@
 import axios from 'axios'
 const apiURL = import.meta.env.VITE_ROOT_API
 
-
-
-
 export default {
   name: 'App',
   data() {
     return {
-      orgName: 'Group 17'
+      orgName: 'Seth Esparza - Form. Group 17'
     }
   },
   created() {
@@ -18,8 +15,8 @@ export default {
     })
   }
 }
-
 </script>
+
 
 
 <template>
@@ -29,14 +26,19 @@ export default {
         <section class="text-center">
           <img class="m-auto" src="@\assets\DanPersona.svg" />
         </section>
-        <nav class="mt-10">
+
+        <nav v-if="!$route.meta.hideNavbar" class="mt-10">
           <ul class="flex flex-col gap-4">
             <li>
               <router-link to="/Login">
-                <span style="position: relative; top: 6px"
-                class="material-icons">person</span>Login
+                <span
+                  style="position: relative; top: 6px"
+                  class="material-icons"
+                  >person</span
+                >LOGOUT
               </router-link>
             </li>
+            <br>
             <li>
               <router-link to="/home">
                 <span
@@ -47,6 +49,7 @@ export default {
                 Dashboard
               </router-link>
             </li>
+            <br>
             <li>
               <router-link to="/intakeform">
                 <span
@@ -77,6 +80,7 @@ export default {
                 Create Services
               </router-link>
             </li>
+            <br>
             <li>
               <router-link to="/EDITService">
                 <span
@@ -87,6 +91,7 @@ export default {
                 Edit Services
               </router-link>
             </li>
+            <br>
             <li>
               <router-link to="/findclient">
                 <span
@@ -134,9 +139,6 @@ export default {
     </div>
   </main>
 </template>
-
-
-
 
 <style>
 #_container {

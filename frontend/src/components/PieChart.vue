@@ -8,7 +8,15 @@
 
 <script>
 import Chart from 'chart.js/auto'
+
+//SP2
 import pieChartData from '../assets/piedata.js'
+
+//SP3
+import axios from 'axios'
+
+//Attempt to fetch from DB - SP3
+
 export default {
   name: 'PieChart',
   data() {
@@ -19,6 +27,21 @@ export default {
   mounted() {
     const ctx = document.getElementById('pie-chart')
     new Chart(ctx, this.pieChartData)
+  },
+
+
+  //using axios for CRUD operations - SP3
+  actions() {
+    fetchData() {
+      axios.get('https://localhost:3000/clients.js')
+        .then(response => {
+          response.data
+        })
+        .catch(error => {
+          this.errorMessage = error.message;
+          console.error("Error", error);
+        });
+    }
   }
 }
 </script>
