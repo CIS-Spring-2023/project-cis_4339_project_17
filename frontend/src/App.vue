@@ -26,7 +26,7 @@ export default {
         <section class="text-center">
           <img class="m-auto" src="@\assets\DanPersona.svg" />
         </section>
-
+        <!-- adding functionality to hide navbar when on LOGIN screen - SP3 -->
         <nav v-if="!$route.meta.hideNavbar" class="mt-10">
           <ul class="flex flex-col gap-4">
             <li>

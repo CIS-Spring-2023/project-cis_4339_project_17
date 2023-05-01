@@ -8,6 +8,7 @@ const routes = [
     name: 'login',
     props: true,
     component: () => import('../components/userlogin.vue'),
+    //hides navbar when on login screen - SP3 
     meta: {
       hideNavbar: true,
      }

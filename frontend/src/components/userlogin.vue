@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import useVuelidate from '@vuelidate/core';
+
 
 
 export default {
@@ -42,6 +44,13 @@ export default {
     },
     hide() {
       return this.$route.path === '/Login';
+    }
+  },
+  setup() {
+    const store = UserLoggedIn()
+    return {
+      v$: useVuelidate(($autoDirty: true)),
+      store
     }
   }
 }
