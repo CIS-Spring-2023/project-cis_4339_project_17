@@ -5,7 +5,6 @@ import AttendanceChart from './barChart.vue'
 import PieChart from './PieChart.vue'
 const apiURL = import.meta.env.VITE_ROOT_API
 
-
 export default {
   components: {
     AttendanceChart,
@@ -28,7 +27,7 @@ export default {
       try {
         this.error = null
         this.loading = true
-        const response = await axios.get(`${apiURL}/events/attendance`)
+        const response = await axios.get(`${apiURL}/events`)
         this.recentEvents = response.data
         this.labels = response.data.map(
           (item) => `${item.name} (${this.formattedDate(item.date)})`
@@ -85,74 +84,70 @@ export default {
       <div
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10"
       >
-      <div class="ml-10"></div>
-      <div class="flex flex-col col-span-2">
-      <div> 
-        <h2 class="font-bold text-4xl text-red-700 tracking-widest text-center mt-10">
-          Number of Events by ZIP Code
-        </h2>
-        <pie-chart/>
-    
-
-      </div>
-
-
-
         <div class="ml-10"></div>
         <div class="flex flex-col col-span-2">
-          <table class="min-w-full shadow-md rounded">
-            <thead class="bg-gray-50 text-xl">
-              <tr class="p-4 text-left">
-                <th class="p-4 text-left">Event Name</th>
-                <th class="p-4 text-left">Event Date</th>
-                <th class="p-4 text-left">Number of Attendees</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-300">
-              <tr
-                @click="editEvent(event._id)"
-                v-for="event in recentEvents"
-                :key="event._id"
-              >
-                <td class="p-2 text-left">{{ event.name }}</td>
-                <td class="p-2 text-left">{{ formattedDate(event.date) }}</td>
-                <td class="p-2 text-left">{{ event.attendees.length }}</td>
-              </tr>
-            </tbody>
-          </table>
           <div>
-            <AttendanceChart
-              v-if="!loading && !error"
-              :label="labels"
-              :chart-data="chartData"
-            ></AttendanceChart>
+            <h2
+              class="font-bold text-4xl text-red-700 tracking-widest text-center mt-10"
+            >
+              Number of Events by ZIP Code
+            </h2>
+            <pie-chart />
+          </div>
 
+          <div class="ml-10"></div>
+          <div class="flex flex-col col-span-2">
+            <table class="min-w-full shadow-md rounded">
+              <thead class="bg-gray-50 text-xl">
+                <tr class="p-4 text-left">
+                  <th class="p-4 text-left">Event Name</th>
+                  <th class="p-4 text-left">Event Date</th>
+                  <th class="p-4 text-left">Number of Attendees</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-300">
+                <tr
+                  @click="editEvent(event._id)"
+                  v-for="event in recentEvents"
+                  :key="event._id"
+                >
+                  <td class="p-2 text-left">{{ event.name }}</td>
+                  <td class="p-2 text-left">{{ formattedDate(event.date) }}</td>
+                  <td class="p-2 text-left">{{ event.attendees.length }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div>
+              <AttendanceChart
+                v-if="!loading && !error"
+                :label="labels"
+                :chart-data="chartData"
+              ></AttendanceChart>
 
-            <!-- Start of loading animation -->
-            <div class="mt-40" v-if="loading">
-              <p
-                class="text-6xl font-bold text-center text-gray-500 animate-pulse"
-              >
-                Loading...
-              </p>
+              <!-- Start of loading animation -->
+              <div class="mt-40" v-if="loading">
+                <p
+                  class="text-6xl font-bold text-center text-gray-500 animate-pulse"
+                >
+                  Loading...
+                </p>
+              </div>
+              <!-- End of loading animation -->
+
+              <!-- Start of error alert -->
+              <div class="mt-12 bg-red-50" v-if="error">
+                <h3 class="px-4 py-1 text-4xl font-bold text-white bg-red-800">
+                  {{ error.title }}
+                </h3>
+                <p class="p-4 text-lg font-bold text-red-900">
+                  {{ error.message }}
+                </p>
+              </div>
+              <!-- End of error alert -->
             </div>
-            <!-- End of loading animation -->
-
-            <!-- Start of error alert -->
-            <div class="mt-12 bg-red-50" v-if="error">
-              <h3 class="px-4 py-1 text-4xl font-bold text-white bg-red-800">
-                {{ error.title }}
-              </h3>
-              <p class="p-4 text-lg font-bold text-red-900">
-                {{ error.message }}
-              </p>
-            </div>
-            <!-- End of error alert -->
           </div>
         </div>
       </div>
     </div>
-    </div>
-    
   </main>
 </template>

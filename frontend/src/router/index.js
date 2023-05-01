@@ -7,7 +7,10 @@ const routes = [
     path: '/Login',
     name: 'login',
     props: true,
-    component: () => import('../views/userlogin.vue')
+    component: () => import('../components/userlogin.vue'),
+    meta: {
+      hideNavbar: true,
+     }
   },
   {
     path: '/home',

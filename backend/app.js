@@ -42,8 +42,8 @@ app.use('/events', require('./routes/events'))
 app.use('/org', require('./routes/org'))
 
 //added middleware for services and users - SP3 
-app.use('/CREATEservices', require('./route/services'))
-app.use('/EDITService', require('./route/services'))
+//app.use('/CREATEservices', require('./route/services'))
+//app.use('/EDITService', require('./route/services'))
 
 
 app.listen(PORT, () => {
